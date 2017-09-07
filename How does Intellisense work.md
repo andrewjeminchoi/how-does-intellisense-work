@@ -62,10 +62,10 @@ Most compilers have 4 stages:
 
 The lexer turns a stream of characters into discrete tokens:
 
-Before: `count == 5`
+Before: `_count == 5`
 
 After:
-* `Identifier(count)`
+* `Identifier(_count)`
 * `Whitespace( )`
 * `Operator(==)`
 * `Whitespace( )`
@@ -78,7 +78,7 @@ After:
 The parser turns a stream of tokens into an AST.
 
 Before:
-* `Identifier(count)`
+* `Identifier(_count)`
 * `Whitespace( )`
 * `Operator(==)`
 * `Whitespace( )`
@@ -86,7 +86,7 @@ Before:
 
 After:
 * `EqualityExpression`
-  * `Left`: `Symbol(count)`
+  * `Left`: `Symbol(_count)`
   * `Right`: `IntegerLiteral(5)`
 
 ---
@@ -97,12 +97,12 @@ The compiler refines and interprets the AST.
 
 Before:
 * `EqualityExpression`
-  * `Left`: `Symbol(count)`
+  * `Left`: `Symbol(_count)`
   * `Right`: `IntegerLiteral(5)`
 
 After:
 * `Equality(ExpressionType:Boolean)`
-  * `Left`: `Field(Class1::Field1), Type=Symbol(Int32), Target=This`
+  * `Left`: `Field(Class1::_count), Type=Symbol(Int32), Target=This`
   * `Right`: `Int32Literal(5)`
 
 ---
